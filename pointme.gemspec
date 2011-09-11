@@ -1,6 +1,7 @@
 # encoding: utf-8
 
-require "lib/pointme/version"
+$:.push File.expand_path "../lib", __FILE__
+require "pointme/version"
 
 Gem::Specification.new do |s|
   s.name        = "pointme"
