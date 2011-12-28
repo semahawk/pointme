@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Szymon Urbaś"]
   s.email       = ["szymon.urbas@yahoo.com"]
   s.homepage    = "http://github.com/semahawk/pointme"
-  s.summary     = %q{It'll point you all the hidden treasures like TODOs and FIXMEs!}
-  s.description = %q{It'll point you all the hidden treasures like TODOs and FIXMEs!}
+  s.summary     = %q{Find all the todo/fixme-lines.}
+  s.description = %q{A simple command line tool for finding all the todo/fixme-lines.}
   s.date        = Time.now.strftime "%Y-%m-%d"
   
   s.files         = `git ls-files`.split "\n"
