@@ -57,11 +57,18 @@ Pointme's role is to find all of these TODO, FIXME and so-on lines and hold'em a
 
 ## Features
 
-Paragraph in progress :)
+So far, Pointme can only pointyou TODOs and FIXMEs but in undeterminated future it would be able to look for both of them.
+
+Pointme can handle several language comments like:
++ # TODO: make it do it
++ // FIXME: make us fix it
++ ; TODO: Mwahahahaha!
++ <!-- TODO: Ghehehe -->
 
 ## Dependencies
 
-+ None (so far). Pointme would try to use only UNIX commands.
++ ruby (working just great on 1.9.2, haven't tried it on other versions yet)
++ rubygems (the newest the better [for sure works under 1.8.5])
 
 ## Beware, beware! A bug!
 
