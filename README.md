@@ -1,74 +1,47 @@
 Pointme
 =======
 
-<table>
-	<tr>
-		<td><b>Homepage</b></td>
-		<td><a href="http://semahawk.github.com/pointme">http://semahawk.github.com/pointme</a></td>
-	</tr>
-	<tr>
-		<td><b>Author</b></td>
-		<td>Szymon Urbaś (szymon.urbas(at)yahoo.com)</td>
-	</tr>
-	<tr>
-		<td><b>Copyright</b></td>
-		<td>2011</td>
-	</tr>
-	<tr>
-		<td><b>License</b></td>
-		<td>MIT</td>
-	</tr>
-	<tr>
-		<td> </td>		
-		<td> </td>		
-	</tr>
-	<tr>
-		<td><b>Latest version</b></td>
-		<td>0.1.0</td>
-	</tr>
-	<tr>
-		<td><b>Release date</b></td>
-		<td>September 11th, 2011</td>
-	</tr>
-	<tr>
-		<td><b>Stage</b></td>
-		<td><i>Development</i></td>
-	</tr>
-</table>
+Pointme is a simple command line utility, that searches for TODO and FIXME lines, and stores them all on a screen.
 
-## A bit about
+## Installation
 
-A lot of developers leaves in their code lines like this (see line 2) <i>(found this piece of code in ruby's library, in rake.rb file, lines 1305 - 1316 [ruby-1.9.2p136 revision 30365])</i>:
+Pointme is a gem, so that would do the job:
 
-    def include(*filenames)
-      # TODO: check for pending
-      filenames.each do |fn|
-        if fn.respond_to? :to_ary
-          include(*fn.to_ary)
-        else
-          @pending_add << fn
-        end
-      end
-      @pending = true
-      self
-    end
+    [sudo] gem install pointme
 
-Pointme's role is to find all of these TODO, FIXME and so-on lines and hold'em all in one place. 
+## Usage
+
+Pointme takes as first argument a token name: could be "todos" or "fixmes".
+
+    pointme todos
+
+This will search in your current working directory, but you also can specify where to look, by passing these places (can be both directories and files) in a `--in` option.
+
+    pointme todos --in /home/me/projects/current
+
+You can pass several dirs and/or files by separating them with `:` sign.
+
+    pointme fixmes --in /home/me/projects/current:/home/me/projects/old_one:/home/me/projects/another/README.md
+
+If you want to pass current directory, just give him a `.` (dot).
+
+    pointme todos --in /home/me/projects/current:.:/home/me/code/somewhere
 
 ## Features
 
-So far, Pointme can only pointyou TODOs and FIXMEs but in undeterminated future it would be able to look for both of them.
+So far, Pointme can only pointyou TODOs and FIXMEs but in undeterminated future it would be able to look for both of them or even for maybe NOTEs or HACKs. Yup, definitely a TODO.
 
 Pointme can handle several language comments like:
-+ # TODO: make it do it
-+ // FIXME: make us fix it
-+ ; TODO: Mwahahahaha!
-+ <!-- TODO: Ghehehe -->
++ # TODO: content
++ // FIXME: content
++ ; TODO: content
++ <!-- TODO: content -->
 
 ## Dependencies
 
 + ruby (working just great on 1.9.2, haven't tried it on other versions yet)
 + rubygems (the newest the better [for sure works under 1.8.5])
++ a UNIX tool called `cat` (but you probably have it, right?)
 
 ## Beware, beware! A bug!
 
@@ -84,6 +57,6 @@ If you encountered a bug, please let me know by adding a new [issue](http://gith
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-## Copyright
+## License
 
-Copyright (c) 2011 Szymon Urbaś. See [LICENSE](http://github.com/semahawk/pointme/blob/master/LICENSE) file for further details.
+Pointme is licensed under the MIT License. See [LICENSE](http://github.com/semahawk/pointme/blob/master/LICENSE) file for further details.
