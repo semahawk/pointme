@@ -37,11 +37,23 @@ Pointme can handle several language comments like:
 + ; TODO: content
 + <!-- TODO: content -->
 
+## Supported MIME types
+
++ text/plain
++ text/x-ruby
++ text/x-python
++ text/x-c
++ text/x-c++
++ text/x-shellscript
++ text/x-java
++ text/x-php
++ text/html
+
 ## Dependencies
 
 + ruby (working just great on 1.9.2, haven't tried it on other versions yet)
 + rubygems (the newest the better [for sure works under 1.8.5])
-+ a UNIX tool called `cat` (but you probably have it, right?)
++ a UNIX tools called `cat` and `file` (but you have them, right?)
 
 ## Beware, beware! A bug!
 

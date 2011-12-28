@@ -22,17 +22,17 @@ module Pointme
               next
             end
           else
-            ext = File.extname(path)[1..-1]
-            # TODO: Make it look in files with proper MIME type not extension.
-            # Don't look into files with that extensions
-            unless (ext == "class" ||
-                    ext == "jar"
-                    ext == "rar"
-                    ext == "bz"
-                    ext == "bz2"
-                    ext == "gz"
-                    ext == "tgz"
-                    ext == "zip")
+            mime = `file --mime -b #{path}`.chomp!.split(";")[0]
+            # Get into files only with that MIME types.
+            if (mime == "text/plain" ||
+                mime == "text/x-ruby" ||
+                mime == "text/x-python" ||
+                mime == "text/x-c" ||
+                mime == "text/x-c++" ||
+                mime == "text/x-shellscript" ||
+                mime == "text/x-java" ||
+                mime == "text/x-php" ||
+                mime == "text/html")
               @files << path
             end
           end
