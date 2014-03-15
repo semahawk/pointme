@@ -48,21 +48,20 @@ module Pointme
 
         all_lines.length.times do |i|
           if /\s*(?<n>[0-9]+)\s+(.*)?(#|\/\/|;|<!--)\s(?<token>TODO|FIXME):\s(?<content>.*)(-->)?/ =~ all_lines[i]
-            j = i + 1
-            # TODO: hello
-            # continuation
-            #       THE continuation
-            l = token.length
-            while /\s*[0-9]+\s+(.*)?(#|\/\/|;)\s(?!TODO|FIXME)\s*(?<moar>.*)(-->)?/ =~ all_lines[j]
-              spaces = n.to_s.length + token.length + 3
-              content += "\n"
-              spaces.times do
-                content += " "
+            if @token == token
+              j = i + 1
+              while /\s*[0-9]+\s+(.*)?(#|\/\/|;)(?<spaces>\s*)(?<moar>[^\s].*)/ =~ all_lines[j]
+                break if spaces.length != token.length + 3   # wrong number of spaces
+                spaces = n.to_s.length + 7
+                content += "\n"
+                spaces.times do
+                  content += " "
+                end
+                content += moar
+                j += 1
               end
-              content += moar
-              j += 1
+              @lines[file] << [n, token, content]
             end
-            @lines[file] << [n, token, content] if @token == token
           end
         end
 
