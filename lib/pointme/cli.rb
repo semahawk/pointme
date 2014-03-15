@@ -1,32 +1,32 @@
 require "trollop"
 
 module Pointme
-  
+
   # Command Line Interface class
-  # 
+  #
   # === Usage
-  # 
+  #
   #     module Pointme
   #        Cli.new.run!
   #     end
-  # 
+  #
   # or
-  # 
+  #
   #     Pointme::Cli.new.run!
-  # 
+  #
   # === Exit statuses
-  # 
+  #
   # - *0* Everything went just fine :)
   # - *1* User said ^C :]
   # - *2* User wanted to look for UnknownToken
-  # 
+  #
   class Cli
-    
+
     # run! the Cli!
     def run!
-      
+
       # Nice, cool 'n' AWESOME --options parsing with Trollop[http://trollop.rubyforge.org/]!
-      # 
+      #
       # @return [Hash] array full of options
       $opts = Trollop::options do
         version "pointme version #{Version::STRING}"
@@ -45,7 +45,7 @@ EOB
         opt :version, "show version and exit"
         opt :help, "show help and exit"
       end
-      
+
       # Let's see what to look for
       token = ARGV.shift.downcase
       unless token == "todos" || token == "fixmes"
@@ -53,7 +53,7 @@ EOB
       end
       # Let's see where to look for
       where = $opts[:in] || Dir.pwd
-      
+
       begin
         Look.for_the token, where
         exit 0
